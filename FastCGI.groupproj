@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{C0C5E5EC-B9E0-40D7-A567-96FBE60BB5F7}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="NGINX\NGINX.FastCGI.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="NGINX_FastCGI">
+        <MSBuild Projects="NGINX\NGINX.FastCGI.dproj"/>
+    </Target>
+    <Target Name="NGINX_FastCGI:Clean">
+        <MSBuild Projects="NGINX\NGINX.FastCGI.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NGINX_FastCGI:Make">
+        <MSBuild Projects="NGINX\NGINX.FastCGI.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="NGINX_FastCGI"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="NGINX_FastCGI:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="NGINX_FastCGI:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
