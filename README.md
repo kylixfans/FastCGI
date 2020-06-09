@@ -21,7 +21,7 @@ Have a look at the NGINX.FCGIApplication.TFCGIApplication class for usage exampl
 This code example shows how to create a FastCGI application and receive requests:
 
 ```pascal
-// Create a new FCGIApplication, will accept FastCGI requests
+// TFCGIApplication Object, will accept FastCGI requests
 var 
   app: TFCGIApplication;
 
@@ -41,6 +41,7 @@ begin
   Response.Content := Content;
 end;
 
+// Create a new FCGIApplication
 app := TFCGIApplication.Create;
 app.OnRequestReceived := WebModule.FCGIRequestReceived;
 // Start listening on port 19000
